@@ -1,7 +1,7 @@
 name: Daily cron job
 on:
   schedule:
-    - cron: '*/5 * * * *' # this will run every five minutes
+    - cron: '*/5 * * * *' # this will run every 10 minutes
 jobs:
   cron:
     runs-on: ubuntu-latest
@@ -9,5 +9,5 @@ jobs:
       - name: Daily cron job
         run: |
           curl --request POST \
-          --url 'http://akesis-pro-terra-sancta-stage.eu-west-1.elasticbeanstalk.com/' \
+          --url 'https://akesis.proterrasancta.org/api/forgotten-donations/remind/' \
           --header 'Authorization: Bearer ${{ secrets.CRON_KEY }}'
